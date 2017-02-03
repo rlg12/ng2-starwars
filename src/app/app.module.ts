@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
+import {RouterModule} from "@angular/router";
+//import {PlanetsModule} from "./planetas/planets.module";
+import {routes} from "./app.routes";
 
 @NgModule({
   declarations: [
@@ -18,8 +21,8 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    CoreModule
-    // CoreModule.forRoot()
+    CoreModule.forRoot(),
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

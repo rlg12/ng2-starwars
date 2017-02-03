@@ -1,16 +1,16 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { SwapiService } from './swapi.service';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import {CommonModule} from "@angular/common";
 
 @NgModule({
-  declarations: [],
-  imports     : [HttpModule],
-  providers   : [SwapiService],
-  // providers   : [],
-  bootstrap   : []
+  imports     : [HttpModule,CommonModule],
+  declarations: [NotFoundComponent, PaginationComponent]
 })
 export class CoreModule {
-  /*static forRoot (): ModuleWithProviders {
+  static forRoot (): ModuleWithProviders {
     return {
       ngModule : CoreModule,
       providers: [SwapiService]
@@ -21,5 +21,5 @@ export class CoreModule {
     return {
       ngModule : CoreModule
     }
-  }*/
+  }
 }

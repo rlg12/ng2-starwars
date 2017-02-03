@@ -6,6 +6,7 @@ import 'rxjs/add/operator/toPromise';
 const BASE_URL = 'http://swapi.co/api/';
 const PEOPLE_URL = `${BASE_URL}people/`;
 const PLANETS_URL = `${BASE_URL}planets/`;
+//const PLANET_URL = `${BASE_URL}planets/:id`;
 
 @Injectable()
 export class SwapiService {
@@ -19,6 +20,11 @@ export class SwapiService {
 
   getPlanets (page: number = 1): Promise<any> {
     return this.list(PLANETS_URL, page);
+  }
+
+  getPlanet(id: number){
+    const  planenetURL = `${PLANETS_URL}${id}`;
+    return this.http.get(planenetURL).toPromise().then((res:Response) => res.json());
   }
 
   private list (url: string, page: number) {
@@ -42,7 +48,7 @@ export class SwapiService {
     const result = res.json();
 
     result.page = page;
-    result.pages = Math.ceil(result.count / result.results.length);
+    result.pages = Math.ceil(result.count /10);
 
     return result;
   }
